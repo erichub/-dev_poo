@@ -3,7 +3,7 @@
 
 /**
  * class User
- * 
+ *
  */
 class User
 {
@@ -15,56 +15,56 @@ class User
    /*** Attributes: ***/
 
   /**
-   * 
+   *
    * @access public
    */
   public $id;
 
   /**
-   * 
+   *
    * @access public
    */
   public $name;
 
   /**
-   * 
+   *
    * @access public
    */
   public $email;
 
   /**
-   * 
+   *
    * @access public
    */
   public $localisation;
 
   /**
-   * 
+   *
    * @access public
    */
   public $age;
 
   /**
-   * 
+   *
    * @access public
    */
   public $role;
 
   /**
-   * 
+   *
    * @access public
    */
   public $create;
 
   /**
-   * 
+   *
    * @access public
    */
   public $update;
 
 
   /**
-   * 
+   *
    *
    * @return void
    * @access public
@@ -73,7 +73,7 @@ class User
   } // end of member function create
 
   /**
-   * 
+   *
    *
    * @return void
    * @access public
@@ -82,7 +82,7 @@ class User
   } // end of member function delete
 
   /**
-   * 
+   *
    *
    * @return void
    * @access public
@@ -91,7 +91,7 @@ class User
   } // end of member function save
 
   /**
-   * 
+   *
    *
    * @return void
    * @access public
@@ -100,7 +100,7 @@ class User
   } // end of member function load
 
   /**
-   * 
+   *
    *
    * @return void
    * @access public
@@ -109,7 +109,7 @@ class User
   } // end of member function connect
 
   /**
-   * 
+   *
    *
    * @return void
    * @access public
@@ -122,4 +122,20 @@ class User
 
 
 } // end of User
+?>
+
+
+<?php
+/*
+  class User {
+    public $id;
+    public $name;
+    public $email;
+    public $localisation;
+    public $age;
+    public $role;
+    public $create;
+    public $upate;
+  }
+*/
 ?>
