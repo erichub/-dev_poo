@@ -62,6 +62,19 @@ class UserEntity
    */
   public $update;
 
+    public function __construct($data) {
+        $this->hydrate($data);
+    }
+
+    private function hydrate($data) {
+
+      foreach ($data as $property => $value) {
+        if (property_exists($this, $property)) {
+          $this->property = $value;
+        }
+
+      }
+    }
 
   /**
    *

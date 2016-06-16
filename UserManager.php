@@ -10,10 +10,39 @@ class UserManager {
 
   }
 
-    public function flush($user) {
+    public function flush(UserEntity $user) {
 
-    $this->user = $user;
-  }
+    if ($user->id) {
+      // UPDATE
+      /*
+      print '<pre>';
+      print_r('UPDATE');
+      print '</pre>';
+      */
+    }
 
-}
+      else {
+
+        $query = $this->_db->prepare('INSERT INTO user (name, email, localisation, age, create, `update` )
+        VALUES (:name, :email, :localisation, :age, NOW(), NOW())');
+        }
+
+        /*
+        // INSERT
+        print '<pre>';
+        print_r('INSERT');
+        print '</pre>';
+        */
+
+        $query->bindParam(':name', $user->name);
+        $query->bindParam(':email', $user->email);
+        $query->bindParam(':localisation', $user->localisation);
+        $query->bindParam(':age', $user->age);
+        $query->bindParam(':create', $user->create);
+        $query->bindParam(':update', $user->update);
+        $query->execute();
+
+      }
+    }
+  
 ?>
