@@ -5,7 +5,7 @@
  * class User
  *
  */
-class User
+class UserEntity
 {
 
   /** Aggregations: */
@@ -88,6 +88,11 @@ class User
    * @access public
    */
   public function save() {
+
+      $_db = new PDO('mysql:host=localhost;dbname=aston', 'root', 'paris');
+      $manager = new UserManager($db);
+      $manager->flush($this); // terme Symphony
+
   } // end of member function save
 
   /**

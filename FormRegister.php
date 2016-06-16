@@ -25,12 +25,12 @@ class FormRegister extends Form
    *
    * @access public
    */
-  public $pass = [
+  public $password = [
     'field' => 'input',
     'type' => 'password',
-    'name' => 'pass',
+    'name' => 'password',
     'attributes' => [
-      'placeholder' => 'Votre pass',
+      'placeholder' => 'Votre mot de passe',
       'require' => TRUE,
     ],
   ];
@@ -53,9 +53,9 @@ class FormRegister extends Form
   public $localisation = [
     'field' => 'input',
     'type' => 'text',
-    'name' => 'city',
+    'name' => 'localisation',
     'attributes' => [
-      'placeholder' => 'Votre Ville',
+      'placeholder' => 'Votre ville',
     ],
   ];
   /**
