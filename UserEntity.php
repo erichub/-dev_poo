@@ -61,7 +61,28 @@ class UserEntity
    * @access public
    */
   public $update;
+    /*
+    public function __construct($data) {
+        $this->hydrate($data);
+    }
+    */
+    private function hydrate($data) {
 
+      $user = new UserEntity;
+
+      foreach ($data as $property => $value) {
+
+        if (property_exists(__CLASS__, $property)) {
+          $user->$property = $value;
+        }
+
+      }
+    }
+
+    // __CLASS__ permet de connaître la class dans laquelle on est
+
+
+    /*
     public function __construct($data) {
         $this->hydrate($data);
     }
@@ -69,12 +90,15 @@ class UserEntity
     private function hydrate($data) {
 
       foreach ($data as $property => $value) {
-        if (property_exists($this, $property)) {
+        if (property_exists(self, $property)) {
           $this->property = $value;
         }
 
       }
     }
+
+    */
+
 
   /**
    *
@@ -82,7 +106,11 @@ class UserEntity
    * @return void
    * @access public
    */
-  public function create() {
+  public static function create($data) {
+
+    $user = self::hydrate($data);
+    return $user;
+
   } // end of member function create
 
   /**
