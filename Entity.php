@@ -2,24 +2,32 @@
 
 
 /**
- * class User
+ * class Entity
  *
  */
-class Entity
-{
+abstract class Entity implements ContentEntityInterface {
 
+  // abstract : class abstract car ne sera jamais instancié ($... = new ...)
   /** Aggregations: */
+
+  // abstract : force les developpeurs à implémenter une méthode
 
   /** Compositions: */
 
    /*** Attributes: ***/
 
+  public $create;
+  /**
+   *
+   *
+  */
+  public $update;
 
   private function hydrate($data, $entity) {
 
       foreach ($data as $property => $value) {
 
-        if (property_exists(__CLASS__, $property)) {
+        if (property_exists($entity, $property)) {
           $entity->$property = $value;
         }
 
@@ -32,14 +40,13 @@ class Entity
   /**
    *
    *
-   * @return void
-   * @access public
    */
   public static function create($data) {
 
     // $user = new UserEntity;
 
-    $user = self::hydrate($data, new UserEntity);
+    $entity = get_called_class();
+    return self::hydrate($data, new $entity);
 
   } // end of member function create
     // self est une class
@@ -50,7 +57,7 @@ class Entity
    * @return void
    * @access public
    */
-  public function delete($data) {
+  public function delete() {
   } // end of member function delete
 
   /**
@@ -59,11 +66,17 @@ class Entity
    * @return void
    * @access public
    */
+
   public function save() {
 
+      // ceci correspond à ce que fait doctrine dans symphony
+
       $_db = new PDO('mysql:host=localhost;dbname=aston', 'root', 'paris');
-      $manager = new UserManager($db);
-      $manager->flush($this); // terme Symphony
+      $entity_class = get_class($this); // => récupère UserEntity
+      $class = str_replace('Entity', 'Manager', $entity_class); // => UserManager
+      $manager = new $class($db); // => récupère UserManager($db);
+      $manager->flush($this); // récupère terme Symphony
+      return $this;
 
   } // end of member function save
 
