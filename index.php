@@ -13,12 +13,13 @@ $_POST = [
   'age' => '25',
 ];
 
-$user = UserEntity::create($_POST);
-$user = new userEntity($_POST);
-$user = new UserEntityCompany($_POST);
+$user = UserEntity::create($_POST)->save();
+//$user = new userEntity($_POST);
+//$user = new UserEntityCompany($_POST);
 
 // $user = new UserEntity();
 
+/*
 $user->name = $_POST['name'];
 $user->email = $_POST['email'];
 $user->password = $_POST['password'];
@@ -27,6 +28,7 @@ $user->age = $_POST['age'];
 
 $user->create = time();
 $user->update = time();
+*/
 
 /*
 print '<pre>';
@@ -34,6 +36,11 @@ print_r($user);
 print '</pre>';
 */
 
-$user->save();
+print '<pre>$user => <br />';
+print_r($user);
+print "</pre>";
+print '<code><em>From class ' . __CLASS__ . ' in function ' . __FUNCTION__ . '() line ' . __LINE__ . ' in file ' . __FILE__ . '</em>.</code>';
+
+//$user->save();
 
 ?>

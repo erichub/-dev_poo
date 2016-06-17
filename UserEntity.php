@@ -66,20 +66,20 @@ class UserEntity
         $this->hydrate($data);
     }
     */
-    private function hydrate($data) {
-
-      $user = new UserEntity;
+  private function hydrate($data, $entity) {
 
       foreach ($data as $property => $value) {
 
         if (property_exists(__CLASS__, $property)) {
-          $user->$property = $value;
+          $entity->$property = $value;
         }
 
       }
+      return $entity;
     }
 
     // __CLASS__ permet de connaître la class dans laquelle on est
+    // C'est une constante magique
 
 
     /*
@@ -108,11 +108,13 @@ class UserEntity
    */
   public static function create($data) {
 
-    $user = self::hydrate($data);
-    return $user;
+    // $user = new UserEntity;
+
+    $user = self::hydrate($data, new UserEntity);
 
   } // end of member function create
-
+    // self est une class
+    // ->this est un objet
   /**
    *
    *
