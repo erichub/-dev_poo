@@ -23,7 +23,7 @@ class UserManager {
 
       else {
 
-        $query = $this->_db->prepare('INSERT INTO user (name, email, localisation, age, create, `update` )
+        $query = $this->_db->prepare('INSERT INTO user (name, email, localisation, age, created, updated )
         VALUES (:name, :email, :localisation, :age, NOW(), NOW())');
         }
 
@@ -38,11 +38,11 @@ class UserManager {
         $query->bindParam(':email', $user->email);
         $query->bindParam(':localisation', $user->localisation);
         $query->bindParam(':age', $user->age);
-        $query->bindParam(':create', $user->create);
-        $query->bindParam(':update', $user->update);
+        //$query->bindParam(':create', $user->create);
+        //$query->bindParam(':update', $user->update);
         $query->execute();
 
       }
     }
-  
+
 ?>

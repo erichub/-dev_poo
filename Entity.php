@@ -16,7 +16,7 @@ abstract class Entity implements ContentEntityInterface {
 
    /*** Attributes: ***/
 
-  public $create;
+  public $created;
   /**
    *
    *
@@ -36,11 +36,6 @@ abstract class Entity implements ContentEntityInterface {
     }
 
 
-
-  /**
-   *
-   *
-   */
   public static function create($data) {
 
     // $user = new UserEntity;
